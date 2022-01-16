@@ -1,4 +1,5 @@
 import 'package:desenhos_flutter/src/pages/basico_page.dart';
+import 'package:desenhos_flutter/src/pages/scroll_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Desenhos',
       //Rotas - Paginas
-      initialRoute: 'basico',
+      initialRoute: 'scroll',
       routes: {
         'basico': (BuildContext context) => BasicoPage(),
+        'scroll': (BuildContext context) => ScrollPage(),
       },
     );
   }

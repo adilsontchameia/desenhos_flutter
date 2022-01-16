@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class BotoesPage extends StatelessWidget {
   const BotoesPage({Key? key}) : super(key: key);
@@ -11,6 +12,13 @@ class BotoesPage extends StatelessWidget {
       body: Stack(
         children: [
           _fundoApp(),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                _titulos(),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -55,6 +63,33 @@ class BotoesPage extends StatelessWidget {
           child: caixaRosa,
         ),
       ],
+    );
+  }
+
+  Widget _titulos() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(25.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Classify transaction',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              'Classify this transaction into particulary category.',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

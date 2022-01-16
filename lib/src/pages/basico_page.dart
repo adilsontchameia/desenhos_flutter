@@ -12,54 +12,64 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: SingleChildScrollView(
+            child: Column(
       children: [
         _criarImagem(),
         _criarTitulo(),
         _criarAcoes(),
         _criarTexto(),
+        _criarTexto(),
+        _criarTexto(),
       ],
-    ));
+    )));
   }
 
   Widget _criarImagem() {
-    return Image(
-      image: NetworkImage(urlImagem),
+    return Container(
+      width: double.infinity,
+      child: Image(
+        image: NetworkImage(urlImagem),
+        height: 280.0,
+        fit: BoxFit.cover,
+      ),
     );
   }
 
   Widget _criarTitulo() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: [
-          //Expanded - Vai tomar todo espaco disponivel sem roubar as dimensoes
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Lago Exemplar',
-                  style: estiloTitulo,
-                ),
-                SizedBox(height: 7.0),
-                Text(
-                  'Este lado e uma foto da internet',
-                  style: estiloSubtitulo,
-                )
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: [
+            //Expanded - Vai tomar todo espaco disponivel sem roubar as dimensoes
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Lago Exemplar',
+                    style: estiloTitulo,
+                  ),
+                  SizedBox(height: 7.0),
+                  Text(
+                    'Este lado e uma foto da internet',
+                    style: estiloSubtitulo,
+                  )
+                ],
+              ),
             ),
-          ),
-          Icon(
-            Icons.star,
-            color: Colors.red,
-            size: 30.0,
-          ),
-          Text(
-            '41',
-            style: TextStyle(fontSize: 20.0),
-          )
-        ],
+            Icon(
+              Icons.star,
+              color: Colors.red,
+              size: 30.0,
+            ),
+            Text(
+              '41',
+              style: TextStyle(fontSize: 20.0),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -89,11 +99,13 @@ class BasicoPage extends StatelessWidget {
   }
 
   Widget _criarTexto() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
-      child: Text(
-        'ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo',
-        textAlign: TextAlign.justify,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+        child: Text(
+          'ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo ExemploExemploExemploExemploExemploExemploExemploExemploExemploExemplo',
+          textAlign: TextAlign.justify,
+        ),
       ),
     );
   }

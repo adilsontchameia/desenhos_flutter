@@ -9,19 +9,19 @@ class BotoesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          _fundoApp(),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                _titulos(),
-              ],
+        body: Stack(
+          children: [
+            _fundoApp(),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  _titulos(),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+        bottomNavigationBar: _bottomNavigationBar(context));
   }
 
   Widget _fundoApp() {
@@ -91,5 +91,31 @@ class BotoesPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _bottomNavigationBar(BuildContext context) {
+    return Theme(
+        data: Theme.of(context).copyWith(
+            canvasColor: const Color.fromRGBO(55, 57, 84, 1.0),
+            primaryColor: Colors.pinkAccent,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                  caption: const TextStyle(
+                    color: Color.fromRGBO(116, 117, 152, 1.0),
+                  ),
+                )),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today, size: 25.0),
+                title: Container()),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bubble_chart, size: 25.0),
+              title: Container(),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_add_alt_1_outlined, size: 25.0),
+                title: Container()),
+          ],
+        ));
   }
 }

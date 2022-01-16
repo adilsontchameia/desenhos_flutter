@@ -31,7 +31,20 @@ class ScrollPage extends StatelessWidget {
 
   _pagina2() {
     return Container(
-      child: _colorFundo(),
+      width: double.infinity,
+      height: double.infinity,
+      color: _corFundo,
+      child: Center(
+        child: RaisedButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+              child: Text('Bem-Vindo', style: TextStyle(fontSize: 20.0)),
+            ),
+            shape: StadiumBorder(),
+            color: Colors.blue,
+            textColor: Colors.white),
+      ),
     );
   }
 

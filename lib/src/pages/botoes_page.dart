@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,6 +17,7 @@ class BotoesPage extends StatelessWidget {
               child: Column(
                 children: [
                   _titulos(),
+                  _botoesRedondos(),
                 ],
               ),
             ),
@@ -96,10 +98,10 @@ class BotoesPage extends StatelessWidget {
   Widget _bottomNavigationBar(BuildContext context) {
     return Theme(
         data: Theme.of(context).copyWith(
-            canvasColor: const Color.fromRGBO(55, 57, 84, 1.0),
+            canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
             primaryColor: Colors.pinkAccent,
             textTheme: Theme.of(context).textTheme.copyWith(
-                  caption: const TextStyle(
+                  caption: TextStyle(
                     color: Color.fromRGBO(116, 117, 152, 1.0),
                   ),
                 )),
@@ -117,5 +119,66 @@ class BotoesPage extends StatelessWidget {
                 title: Container()),
           ],
         ));
+  }
+
+  Widget _botoesRedondos() {
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            _criarBotaoRendondo(Colors.blue, Icons.border_all, 'General'),
+            _criarBotaoRendondo(Colors.purple, Icons.directions, 'Direction'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _criarBotaoRendondo(Colors.orange, Icons.shop, 'Buy'),
+            _criarBotaoRendondo(Colors.pinkAccent, Icons.file_copy, 'Drive'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _criarBotaoRendondo(Colors.blueAccent, Icons.movie, 'Movie'),
+            _criarBotaoRendondo(Colors.green, Icons.party_mode, 'Party'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _criarBotaoRendondo(Colors.red, Icons.photo, 'Photos'),
+            _criarBotaoRendondo(Colors.teal, Icons.help, 'Help'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _criarBotaoRendondo(Color color, IconData icone, String texto) {
+    return BackdropFilter(
+      //sigmaX: 1.0, sigmaY: 1.0
+      filter: ImageFilter.blur(),
+      child: Container(
+        height: 180.0,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(62, 66, 107, 0.7),
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(height: 5.0),
+            CircleAvatar(
+                backgroundColor: Colors.pinkAccent,
+                radius: 35.0,
+                child: Icon(icone, color: Colors.white, size: 30.0)),
+            Text(
+              texto,
+              style: TextStyle(color: color),
+            ),
+            SizedBox(height: 5.0)
+          ],
+        ),
+      ),
+    );
   }
 }
